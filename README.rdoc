@@ -1,28 +1,50 @@
-== README
+= Considerations
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+- Form for user to input url to be shortened
+- On submit, generate the shortened link and allow user to click(test it)
+- When a request comes in with the format http://our-site/fEb17, redirect user to the original url
+	for e.g,
+		example.com/8dK23e 
+		=> /show/:key
+		=> Url.find key
+		=> redirect to the original_url returned, 
+			if no matches found, show index page
 
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+- routes
+	Use 3 actions:
+		- new
+		- create
+		- show
+
+	#index would map to #new for convenience	
+	#show would retrieve the original url and redirect the user there automatically
+
+- models
+	Link
+		original_url 
+		shortened_url, must be unique
+	Visitor
+		ipaddr
+
+- helper
+	come out with a method that returns a random string of length 5
+
+- validation
+	ensure url is not empty and ensure that its in a proper url format
+	ensure shortened_url that is generated does not collide with existing values in the db
+
+
+
+= (Unimplemented)Improvements
+
+== General
+- use ruby's to_s method to so that we no longer have to store the shortened_url in db. This avoids any lookup.
+- url validation is too simple. find a gem that does extensive checks.
+- store ip addresses as IpAddr instead of string
+- add db index on shortened url to increase lookups
+- add visits counter so that we can use that information to cache/store urls which are popular
+
+== Testing
+- use Faker or equivalent to populate the db
+- write integrations test to ensure all validations works as intended
