@@ -1,38 +1,31 @@
-= Considerations
+= Considerations before starting work on the app:
 
 - Form for user to input url to be shortened
-- On submit, generate the shortened link and allow user to click(test it)
-- When a request comes in with the format http://our-site/fEb17, redirect user to the original url
-	for e.g,
-		example.com/8dK23e 
-		=> /show/:key
-		=> Url.find key
-		=> redirect to the original_url returned, 
-			if no matches found, show index page
 
+- On submit, generate the shortened link and allow user to click(test it)
 
 - routes
-	Use 3 actions:
-		- new
-		- create
-		- show
+	-- When a request comes in with the format http://our-site/fEb17, redirect user to the original url
+		--- for e.g,
+			---- example.com/8dK23e 
+			---- /show/:key
+			---- Url.find key
+			---- redirect to the original_url returned, 
 
-	#index would map to #new for convenience	
-	#show would retrieve the original url and redirect the user there automatically
 
 - models
-	Link
-		original_url 
-		shortened_url, must be unique
-	Visitor
-		ipaddr
+	-- Link
+		--- original_url 
+		--- shortened_url, must be unique
+	-- Visitor
+		--- ipaddr
+		--- link_id [FK]
 
 - helper
-	come out with a method that returns a random string of length 5
+	-- come out with a method that returns a random string of length 5
 
 - validation
-	ensure url is not empty and ensure that its in a proper url format
-	ensure shortened_url that is generated does not collide with existing values in the db
+	-- ensure url is not empty and ensure that its in a proper url format
 
 
 
@@ -44,6 +37,8 @@
 - store ip addresses as IpAddr instead of string
 - add db index on shortened url to increase lookups
 - add visits counter so that we can use that information to cache/store urls which are popular
+- ensure shortened_url that is generated does not collide with existing values in the db
+
 
 == Testing
 - use Faker or equivalent to populate the db
