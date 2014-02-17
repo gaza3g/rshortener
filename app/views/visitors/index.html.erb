@@ -1,1 +1,8 @@
-ehllo
+
+<% @links.each do |link| %>
+	<p>
+  		<%= link.original_url %> 
+  		<%= link.visitors_count %>
+  		<%= link_to link.shortened_url, :controller => :visitors, :action => :show, :id => link.id%>
+  	</p>
+<% end %>
