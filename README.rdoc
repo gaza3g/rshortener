@@ -30,7 +30,10 @@ Ensure url is not empty and ensure that its in a proper url format
 
 
 
-= (Unimplemented)Improvements
+= Bugs / Future Improvements
+
+== Bugs
+I have created a view that will show the popular urls and the hit counts. Clicking on the link will further break it down into individual IP addresses. This is currently not working not Heroku.
 
 == General
 - use ruby's to_s method to so that we no longer have to store the shortened_url in db. This avoids any lookup.
