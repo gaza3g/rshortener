@@ -1,23 +1,31 @@
-<%= form_for :link, url: links_path do |f| %>
 
-	<% if @link.errors.any? %>
-	<div id="error_explanation">
-		<h2><%= pluralize(@link.errors.count, "error") %>.</h2>
-		<ul>
-		<% @link.errors.full_messages.each do |msg| %>
-			<li><%= msg %></li>
+<h1 class="cover-heading">Shorten your URLs.</h1>
+
+<p class="lead">
+
+	<%= form_for :link, url: links_path, :html => { :class => "form-inline", :role => "form"} do |f| %>
+
+		<% if @link.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@link.errors.count, "error") %>.</h2>
+			<ul>
+			<% @link.errors.full_messages.each do |msg| %>
+				<li><%= msg %></li>
+			<% end %>
+			</ul>
+		</div>
 		<% end %>
-		</ul>
-	</div>
-	<% end %>
 
-	<p>
-		<%= f.label :original_url, 'Enter a url:' %><br>
-		<%= f.text_field :original_url %>
-	</p>
+		<div class="form-group">
+			<%= f.text_field :original_url, class: "form-control input-mysize" %>
+		</div>
 
-	<p>
-		<%= f.submit %>
-	</p>
+		<div class="form-actions" style="margin-top: 20px;">
+			<%= f.submit "Shorten!", class: "btn btn-lg btn-success" %>
+		</div>
 
-<% end %>	
+	<% end %>	
+</p>
+
+
+
