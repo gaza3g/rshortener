@@ -11,8 +11,11 @@ class LinksController < ApplicationController
 	def create
 		@link = Link.new(post_params)
 		@link.shortened_url = generate_random_string
-		@link.save
-		redirect_to action:'new'
+		if @link.save
+			redirect_to action:'new'
+		else
+			render 'new'
+		end
 	end
 
 	def show
