@@ -1,5 +1,16 @@
 <%= form_for :link, url: links_path do |f| %>
 
+	<% if @link.errors.any? %>
+	<div id="error_explanation">
+		<h2><%= pluralize(@link.errors.count, "error") %>.</h2>
+		<ul>
+		<% @link.errors.full_messages.each do |msg| %>
+			<li><%= msg %></li>
+		<% end %>
+		</ul>
+	</div>
+	<% end %>
+
 	<p>
 		<%= f.label :original_url, 'Enter a url:' %><br>
 		<%= f.text_field :original_url %>
