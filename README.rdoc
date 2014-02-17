@@ -1,31 +1,32 @@
 = Considerations before starting work on the app:
 
-- Form for user to input url to be shortened
+Create form for user to input url to be shortened
 
-- On submit, generate the shortened link and allow user to click(test it)
+On submit, generate the shortened link and allow user to click(test it)
 
-- routes
-	-- When a request comes in with the format http://our-site/fEb17, redirect user to the original url
-		--- for e.g,
-			---- example.com/8dK23e 
-			---- /show/:key
-			---- Url.find key
-			---- redirect to the original_url returned, 
+== Models
+<b>Link</b>
+<tt>original_url</tt>
+<tt>shortened_url, must be unique</tt>
+<b>Visitor</b>
+<tt>ipaddr</tt>
+<tt>link_id [FK]</tt>
+
+== Routes
+When a request comes in with the format http://our-site/fEb17, redirect user to the original url
+for e.g
+=> example.com/8dK23e 
+=> /show/:key
+=> Link.find key
+=> redirect to the original_url returned, 
 
 
-- models
-	-- Link
-		--- original_url 
-		--- shortened_url, must be unique
-	-- Visitor
-		--- ipaddr
-		--- link_id [FK]
 
-- helper
-	-- come out with a method that returns a random string of length 5
+== Helper
+Come out with a method that returns a random string of length 5
 
-- validation
-	-- ensure url is not empty and ensure that its in a proper url format
+== Validation
+Ensure url is not empty and ensure that its in a proper url format
 
 
 
