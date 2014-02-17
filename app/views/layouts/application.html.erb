@@ -9,28 +9,34 @@
 </head>
 <body>
 
-<div class="site-wrapper">
 
-      <div class="site-wrapper-inner">
+	<div class="site-wrapper">
 
-        <div class="cover-container">
+	  <div class="site-wrapper-inner">
 
-          <div class="masthead clearfix">
-            <div class="inner">
-              <h3 class="masthead-brand">Reshortener</h3>
-            </div>
-          </div>
+	    <div class="cover-container">
 
-          <div class="inner cover">
-          	<%= yield %>
-          </div>
+	      <div class="masthead clearfix">
+	        <div class="inner" style="margin-top: 20px;">
+	          <h3 class="masthead-brand">Reshortener</h3>
+	        </div>
+	      </div>
+
+	      <div class="inner cover">
+	      	<%= yield %>
+
+	      	
+			<% flash.each do |name, msg| -%>
+				  <%= content_tag :div, msg, class: flash_class(name) %>
+			<% end -%>
+	      </div>
 
 
-        </div>
+	    </div>
 
-      </div>
+	  </div>
 
-    </div>
+	</div>
 
 
 <script src="//netdna.bootstrapcdn.com/bootstrap/<%= bootstrap_version %>/js/bootstrap.min.js"></script>

@@ -15,6 +15,7 @@ class LinksController < ApplicationController
 		@link.shortened_url = generate_random_string
 
 		if @link.save
+			flash[:notice] = "Link created. " + request.protocol + request.host + "/" + @link.shortened_url
 			redirect_to action:'new'
 		else
 			render 'new'
