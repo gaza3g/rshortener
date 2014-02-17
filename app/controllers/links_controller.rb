@@ -10,7 +10,10 @@ class LinksController < ApplicationController
 
 	def create
 		@link = Link.new(post_params)
+
+		#generate url
 		@link.shortened_url = generate_random_string
+
 		if @link.save
 			redirect_to action:'new'
 		else
@@ -20,6 +23,10 @@ class LinksController < ApplicationController
 
 	def show
 		link = Link.find_by_shortened_url(params[:id])
+
+		#create an entry for the visited link
+		link.visitors.create(:ipaddr => request.remote_ip)
+
 		redirect_to link.original_url
 	end
 
