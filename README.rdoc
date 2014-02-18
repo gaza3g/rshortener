@@ -41,6 +41,20 @@ To retrieve visitor information for a specific link:
 <tt>http://rshortener.herokuapp.com/visitors/:key.xml</tt> or
 <tt>http://rshortener.herokuapp.com/visitors/:key.json</tt>
 
+For example: <tt>http://rshortener.herokuapp.com/visitors/v91pb.xml</tt> returns
+
+<pre>
+<visitors type="array">
+	<visitor>
+	<id type="integer">19</id>
+	<ipaddr>175.156.163.203</ipaddr>
+	<link-id type="integer">1</link-id>
+	<created-at type="dateTime">2014-02-18T04:09:08Z</created-at>
+	<updated-at type="dateTime">2014-02-18T04:09:08Z</updated-at>
+	</visitor>
+</visitors>
+</pre>
+
 == Helper
 Come out with a method that returns a random string of length 5
 
