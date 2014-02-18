@@ -17,11 +17,11 @@
 		<% end %>
 
 		<div class="form-group">
-			<%= f.text_field :original_url, class: "form-control input-mysize" %>
+			<%= f.text_field :original_url, :placeholder => "Enter a url to shorten it", class: "form-control input-mysize" %>
 		</div>
 
 		<div class="form-actions" style="margin-top: 20px;">
-			<%= f.submit "Shorten!", class: "btn btn-lg btn-success" %>
+			<%= f.submit "Shortify!", class: "btn btn-lg btn-info" %>
 		</div>
 
 	<% end %>	
