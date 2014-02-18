@@ -4,7 +4,7 @@
 		<tr>
 			<th>Url</th>
 			<th>Visits</th>
-			<th>Shortened Url</th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -12,7 +12,7 @@
 		<tr>
 	  		<td><%= link.original_url %></td>
 	  		<td><%= link.visitors_count %></td>
-	  		<td><%= link_to link.shortened_url, :controller => :visitors, :action => :show, :id => link.id %></td>
+	  		<td class="underline"><%= link_to link.shortened_url, :controller => :visitors, :action => :show, :id => link.id %></td>
 		</tr>
 		<% end %>
 	</tbody>
