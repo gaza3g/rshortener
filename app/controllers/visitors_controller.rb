@@ -5,10 +5,11 @@ class VisitorsController < ApplicationController
 	end
 
 	def show
-		@visitors = Link.find_by_shortened_url(params[:id]).visitors
-		if @visitors.empty?
-			@visitors = Link.find(params[:id]).visitors
+		link = Link.find_by_shortened_url(params[:id])
+		if link.nil?
+			link = Link.find(params[:id])
 		end
+		@visitors = link.visitors
 		respond_to do |format|
 		  format.html 
 	      format.xml  { render xml: @visitors }
