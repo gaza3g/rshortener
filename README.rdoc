@@ -4,62 +4,70 @@ Create form for user to input url to be shortened
 
 On submit, generate the shortened link and allow user to click(test it)
 
-== Models
-<b>Link</b>
-<tt>original_url</tt>
-<tt>shortened_url, must be unique</tt>
-<b>Visitor</b>
-<tt>ipaddr</tt>
-<tt>link_id [FK]</tt>
+== Schema
+
+   # == Schema Info
+   #
+   # Table name: Links
+   #
+   #  id                  primary key
+   #  original_url            
+   #  shortened_url          
+   #  created_at          
+   #  updated_at            
+   #
+   # Table name: Visitors
+   #
+   #  id                  primary key
+   #  ipaddr            
+   #  created_at          
+   #  updated_at            
+   #  link_id             foreign key
+   #
 
 == Routes
-When a request comes in with the format http://our-site/:key, redirect user to the original url
-for e.g
-1) example.com/8dK23e 
-2) /show/:key
-3) Link.find key
-4) redirect to the original_url returned, 
+When a request comes in with the format <tt>http://our-site/:key</tt>, redirect user to the original url, for e.g:
+   1) example.com/8dK23e 
+   2) /show/:key
+   3) Link.find key
+   4) redirect to the original_url returned, 
 
 == API
-To retrieve information regarding a specific shorlink:
-<tt>http://rshortener.herokuapp.com/:key.xml</tt> or
-<tt>http://rshortener.herokuapp.com/:key.json</tt>
+To retrieve information regarding a specific shortlink:
+   <tt>http://rshortener.herokuapp.com/:key.xml</tt> or
+   <tt>http://rshortener.herokuapp.com/:key.json</tt>
 
 For example: <tt>http://rshortener.herokuapp.com/v91pb.xml</tt> returns
 
-<pre>
-<link>
-	<id type="integer">1</id>
-	<original-url>http://store.apple.com/us/buy-mac/macbook-air</original-url>
-	<shortened-url>v91pb</shortened-url>
-	<created-at type="dateTime">2014-02-17T11:42:28Z</created-at>
-	<updated-at type="dateTime">2014-02-17T11:42:28Z</updated-at>
-</link>
-</pre>
+   <link>
+   	<id type="integer">1</id>
+   	<original-url>http://store.apple.com/us/buy-mac/macbook-air</original-url>
+   	<shortened-url>v91pb</shortened-url>
+   	<created-at type="dateTime">2014-02-17T11:42:28Z</created-at>
+   	<updated-at type="dateTime">2014-02-17T11:42:28Z</updated-at>
+   </link>
 
-To retrieve visitor information for a specific link:
-<tt>http://rshortener.herokuapp.com/visitors/:key.xml</tt> or
-<tt>http://rshortener.herokuapp.com/visitors/:key.json</tt>
+To retrieve visitor information for a specific shortlink:
+   <tt>http://rshortener.herokuapp.com/visitors/:key.xml</tt> or
+   <tt>http://rshortener.herokuapp.com/visitors/:key.json</tt>
 
 For example: <tt>http://rshortener.herokuapp.com/visitors/v91pb.xml</tt> returns
 
-<pre>
-<visitors type="array">
-	<visitor>
-	<id type="integer">19</id>
-	<ipaddr>175.156.163.203</ipaddr>
-	<link-id type="integer">1</link-id>
-	<created-at type="dateTime">2014-02-18T04:09:08Z</created-at>
-	<updated-at type="dateTime">2014-02-18T04:09:08Z</updated-at>
-	</visitor>
-</visitors>
-</pre>
+   <visitors type="array">
+   	<visitor>
+   	<id type="integer">19</id>
+   	<ipaddr>175.156.163.203</ipaddr>
+   	<link-id type="integer">1</link-id>
+   	<created-at type="dateTime">2014-02-18T04:09:08Z</created-at>
+   	<updated-at type="dateTime">2014-02-18T04:09:08Z</updated-at>
+   	</visitor>
+   </visitors>
 
 == Helper
 Come out with a method that returns a random string of length 5
 
 == Validation
-Ensure url is not empty and ensure that its in a proper url format
+Ensure url is not empty and ensure that it is in a proper url format
 
 
 
