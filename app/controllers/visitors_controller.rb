@@ -1,7 +1,7 @@
 class VisitorsController < ApplicationController
 
 	def index
-		@links = Link.all(:joins => :visitors, :group => 'visitors.link_id', :order => 'count(*)')
+		@links = Link.joins(:visitors).select("links.*, count(visitors.link_id) as visitors_count").order("visitors_count DESC").group("links.id")
 	end
 
 	def show
