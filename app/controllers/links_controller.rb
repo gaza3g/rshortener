@@ -28,7 +28,14 @@ class LinksController < ApplicationController
 		#create an entry for the visited link
 		link.visitors.create(:ipaddr => request.remote_ip)
 
-		redirect_to link.original_url
+		respond_to do |format|
+		  format.html {
+		  	redirect_to link.original_url
+		  }
+	      format.xml  { render xml: link }
+	      format.json { render json: link }
+	    end
+
 	end
 
 	private 

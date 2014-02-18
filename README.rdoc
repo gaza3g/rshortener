@@ -13,13 +13,19 @@ On submit, generate the shortened link and allow user to click(test it)
 <tt>link_id [FK]</tt>
 
 == Routes
-When a request comes in with the format http://our-site/fEb17, redirect user to the original url
+When a request comes in with the format http://our-site/:key, redirect user to the original url
 for e.g
 1) example.com/8dK23e 
 2) /show/:key
 3) Link.find key
 4) redirect to the original_url returned, 
 
+== API
+To retrieve information regarding a specific shorlink:
+<tt>http://rshortener.herokuapp.com/:key.xml</tt> or
+<tt>http://rshortener.herokuapp.com/:key.json</tt>
+
+For example: <tt>http://rshortener.herokuapp.com/v91pb.xml
 
 
 == Helper
@@ -36,6 +42,7 @@ Ensure url is not empty and ensure that its in a proper url format
 I have created a view that will show the popular urls and the hit counts. Clicking on the link will further break it down into individual IP addresses. This is currently not working not Heroku.
 
 == General
+- better API support which allows shortlink creation via REST
 - use ruby's to_s method to so that we no longer have to store the shortened_url in db. This avoids any lookup.
 - url validation is too simple. find a gem that does extensive checks.
 - store ip addresses as IpAddr instead of string
