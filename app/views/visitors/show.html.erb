@@ -1,6 +1,18 @@
-
-<% @visitors.each do |visitor| %>
-	<p>
-  		<%= visitor.ipaddr %> 
-  	</p>
-<% end %>
+<div class="table-responsive">
+<table class="table">
+	<thead>
+		<tr>
+			<th>Visitor IP</th>
+			<th>Date</th>
+		</tr>
+	</thead>
+	<tbody>
+		<% @visitors.each do |visitor| %>
+		<tr>
+	  		<td><%= visitor.ipaddr %></td>
+	  		<td><%= visitor.created_at %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+</div>

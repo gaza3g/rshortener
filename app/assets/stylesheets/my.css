@@ -1,1 +1,8 @@
 .input-mysize { width: 400px !important}
+tbody tr td { text-align: left;}
+.underline { text-decoration: underline;}
+
+a.logo:link {text-decoration:none;}
+a.logo:visited {text-decoration:none;}
+a.logo:hover {text-decoration:none;}
+a.logo:active {text-decoration:none}
