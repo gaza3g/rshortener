@@ -71,10 +71,7 @@ Ensure url is not empty and ensure that it is in a proper url format
 
 
 
-= Bugs / Future Improvements
-
-== Bugs
-I have created a view that will show the popular urls and the hit counts. Clicking on the link will further break it down into individual IP addresses. This is currently not working not Heroku.
+= Future Improvements
 
 == General
 - better API support which allows shortlink creation via REST
