@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.0'
 
 
-gem 'sqlite3', group: [:production, :test]
+# gem 'sqlite3', group: [:production, :test]
 gem 'pg', group: :development
 
 # Use SCSS for stylesheets
