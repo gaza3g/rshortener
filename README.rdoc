@@ -25,8 +25,21 @@ To retrieve information regarding a specific shorlink:
 <tt>http://rshortener.herokuapp.com/:key.xml</tt> or
 <tt>http://rshortener.herokuapp.com/:key.json</tt>
 
-For example: <tt>http://rshortener.herokuapp.com/v91pb.xml
+For example: <tt>http://rshortener.herokuapp.com/v91pb.xml</tt> returns
 
+<pre>
+<link>
+	<id type="integer">1</id>
+	<original-url>http://store.apple.com/us/buy-mac/macbook-air</original-url>
+	<shortened-url>v91pb</shortened-url>
+	<created-at type="dateTime">2014-02-17T11:42:28Z</created-at>
+	<updated-at type="dateTime">2014-02-17T11:42:28Z</updated-at>
+</link>
+</pre>
+
+To retrieve visitor information for a specific link:
+<tt>http://rshortener.herokuapp.com/visitors/:key.xml</tt> or
+<tt>http://rshortener.herokuapp.com/visitors/:key.json</tt>
 
 == Helper
 Come out with a method that returns a random string of length 5
