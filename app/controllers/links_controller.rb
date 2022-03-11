@@ -11,7 +11,7 @@ class LinksController < ApplicationController
 	def create
 		@link = Link.new(post_params)
 
-		#generate url
+		#generate url and test 
 		@link.shortened_url = generate_random_string
 
 		if @link.save
